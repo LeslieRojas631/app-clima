@@ -24,39 +24,56 @@ El código anterior consta de dos funciones principales: `fetchDatosClima(ciudad
         .then(data => mostrarDatosClima(data))
     }
     
-2.  `mostrarDatosClima(data)`: Esta función se encarga de mostrar los datos del clima en la página. Recibe los datos del clima en formato JSON como parámetro. Primero, obtiene las diferentes propiedades relevantes de los datos, como el nombre de la ciudad, el nombre del país, la temperatura, la humedad, la descripción y el icono del clima. Luego, crea elementos HTML apropiados, como encabezados y párrafos, y les asigna el contenido correspondiente utilizando la propiedad `textContent`. También crea un elemento de imagen para mostrar el icono del clima. Finalmente, agrega todos los elementos creados al elemento `<div>` con el ID "datosClima" en tu página.
+2.  `mostrarDatosClima(data)`: Esta función se encarga de mostrar los datos del clima en la página. Recibe los datos del clima en formato JSON como parámetro. Primero, obtiene las diferentes propiedades relevantes de los datos, como el nombre de la ciudad, el nombre del país, la temperatura, la humedad, la descripción y el icono del clima. Luego, crea elementos HTML apropiados, como encabezados y párrafos, y les asigna el contenido correspondiente utilizando la propiedad `textContent`. También crea un elemento de imagen para mostrar el icono del clima. Finalmente, agrega todos los elementos creados al elemento `<div>` con el ID "datosClima", "datosTemperatura" y "datosHumedad" en tu página.
 
-    function mostrarDatosClima(data){
-        const divDatosClima = document.getElementById('datosClima')
-        divDatosClima.innerHTML=''
-    
-        const ciudadNombre = data.name
-        const paisNombre = data.sys.country
-        const temperatura = data.main.temp
-        const humedad = data.main.humidity
-        const descripcion = data.weather[0].description
-        const icono = data.weather[0].icon
-    
-        const ciudadTitulo = document.createElement('h2')
-        ciudadTitulo.textContent = `${ciudadNombre}, ${paisNombre}`
-    
-        const temperaturaInfo = document.createElement('p')
-        temperaturaInfo.textContent = `La temperatura es: ${Math.floor(temperatura-difKelvin)}ºC`
-        
-        const humedadInfo = document.createElement('p')
-        humedadInfo.textContent = `La humedad es: ${humedad}%`
-    
-        const iconoInfo = document.createElement('img')
-        iconoInfo.src= `https://openweathermap.org/img/wn/${icono}@2x.png`
-    
-        const descripcionInfo = document.createElement('p')
-        descripcionInfo.textContent = `La descripción meteorológica es: ${descripcion}`
-    
-        divDatosClima.appendChild(ciudadTitulo)
-        divDatosClima.appendChild(temperaturaInfo)
-        divDatosClima.appendChild(humedadInfo)
-        divDatosClima.appendChild(iconoInfo)
-        divDatosClima.appendChild(descripcionInfo)
+function mostrarDatosClima(data) {
+    const divDatosClima = document.getElementById('datosClima');
+    divDatosClima.innerHTML = '';
+
+    const ciudadNombre = data.name;
+    const paisNombre = data.sys.country;
+    const temperatura = data.main.temp;
+    const icono = data.weather[0].icon;
+
+    const divDatosTemperatura = document.getElementById('datosTemperatura');
+    divDatosTemperatura.innerHTML = '';
+    const temperaturaMinima = data.main.temp_min;
+    const temperaturaMaxima = data.main.temp_max;
+
+    const divDatosHumedad = document.getElementById('datosHumedad');
+    divDatosHumedad.innerHTML = '';
+    const humedad = data.main.humidity;
+    const descripcion = data.weather[0].description;
+
+    // Elementos de clima
+    const ciudadTitulo = document.createElement('h2');
+    ciudadTitulo.textContent = `${ciudadNombre}, ${paisNombre}`;
+
+    const temperaturaInfo = document.createElement('p');
+    temperaturaInfo.textContent = `La temperatura actual es: ${Math.floor(temperatura - difKelvin)}°C`;
+
+    const temperaturaMinInfo = document.createElement('p');
+    temperaturaMinInfo.textContent = `La temperatura mínima es: ${Math.floor(temperaturaMinima - difKelvin)}°C`;
+
+    const temperaturaMaxInfo = document.createElement('p');
+    temperaturaMaxInfo.textContent = `La temperatura máxima es: ${Math.floor(temperaturaMaxima - difKelvin)}°C`;
+
+    const descripcionInfo = document.createElement('p');
+    descripcionInfo.textContent = `Descripción: ${descripcion}`;
+
+    const iconoInfo = document.createElement('img');
+    iconoInfo.src = `https://openweathermap.org/img/wn/${icono}@2x.png`;
+
+    const humedadInfo = document.createElement('p');
+    humedadInfo.textContent = `La humedad es: ${humedad}%`;
+
+    divDatosClima.appendChild(ciudadTitulo);
+    divDatosClima.appendChild(iconoInfo);
+    divDatosClima.appendChild(temperaturaInfo);
+    divDatosClima.appendChild(temperaturaMinInfo);
+    divDatosClima.appendChild(temperaturaMaxInfo);
+    divDatosTemperatura.appendChild(descripcionInfo);
+    divDatosHumedad.appendChild(humedadInfo);
     }
     
 
