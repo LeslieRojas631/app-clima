@@ -61,7 +61,6 @@ function mostrarDatosClima(data) {
     const humedadInfo = document.createElement('p');
     humedadInfo.textContent = `La humedad es: ${humedad}%`;
 
-    // Append en el orden solicitado
     divDatosClima.appendChild(ciudadTitulo);
     divDatosClima.appendChild(iconoInfo);
     divDatosClima.appendChild(temperaturaInfo);
