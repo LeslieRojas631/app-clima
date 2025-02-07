@@ -16,7 +16,6 @@ function fetchDatosClima(ciudad) {
         .then(data => mostrarDatosClima(data))
 }
 
-
 function mostrarDatosClima(data) {
     const divDatosClima = document.getElementById('datosClima')
     divDatosClima.innerHTML = ''  // Limpiar datos anteriores
