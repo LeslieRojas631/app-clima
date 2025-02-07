@@ -1,9 +1,9 @@
 /* Estilos generales */
 * {
-  margin: 0;
+  margin: 10;
   padding: 0;
   box-sizing: border-box;
-}
+} 
 
 body {
   font-family: 'Inter', sans-serif;
@@ -25,10 +25,13 @@ body {
 }
 
 h1 {
-  font-size: 36px;
-  color: #2d3436;
+  font-size: 30px;
+  color: #5c338fc9;
   margin-bottom: 24px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.174); 
 }
 
 input[type="text"] {
@@ -54,7 +57,7 @@ button {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #754caf;
+  background-color: #754cafa4;
   color: white;
   border: none;
   border-radius: 30px;
@@ -64,8 +67,8 @@ button {
 }
 
 button:hover {
-  background-color: #59389c;
-  box-shadow: 0 8px 16px rgba(89, 56, 156, 0.4);
+  background-color: #6a389c99;
+  box-shadow: 0 8px 16px rgba(117, 90, 171, 0.3);
   transform: scale(1.05);
 }
 
